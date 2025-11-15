@@ -1,0 +1,136 @@
+/* CONFIG */
+:root{
+  --thisoe:#178577;
+}
+
+
+
+/* FONT */
+@font-face {
+  font-family: "FP";
+  src: url("../font/fusion-pixel-12px-monospaced-zh_hans.ttf.woff2") format("woff2");
+}
+
+
+
+/* RESET */
+html,body,
+i,a,p,button{all:unset}
+
+*{
+  margin:0;
+  font-size:12pt;line-height:1;
+  font-family:"FP";
+}
+*, ::before, ::after{
+  box-sizing: border-box;  margin: 0; padding: 0;
+}
+i,nav,p{display:flex;flex-direction:column}
+
+*::selection{
+  background:#07f7;
+  /* color:#cef; */
+  /* text-shadow: 1px 1px #335; */
+}
+
+
+
+/*******/
+body{
+  background-color:var(--thisoe);
+  &>*{color:#fff}
+}
+main{
+  display:none;
+  position:fixed; top:0; left:0;
+  flex-direction:column;
+  width:100%;height:100%;
+  height:100dvh;
+  overflow:auto;
+
+  &>i{
+    width:100%;height:100%;
+    min-height:500pt;
+    justify-content: space-evenly;
+  }
+}
+footer{
+  text-align:end;
+  font-size:9pt;
+}
+
+h1{
+  margin:0 auto;
+  font-size:27pt;
+  font-weight:normal;
+  line-height:1;
+  overflow:hidden; white-space:nowrap;
+  text-shadow: 3pt 3pt #000A;
+}
+
+/* Minecraft Button ( by Joel https://codepen.io/joexmdq/pen/EOMLzg )
+ * !!! PUT TEXT INTO <p> INSIDE THE <a> or <button> !!! 
+ * E.g. <a href="map"><p>实时地图</p></a>
+ */
+a, button{
+  width:360pt; height:36pt;
+  overflow:hidden; white-space:nowrap;
+  user-select:none;
+  background:#999 url('../public/mcbtn.png') center / cover;
+  image-rendering:pixelated;
+  border:2px solid #000;
+  cursor:default;
+
+  &>p{
+    font-size:18pt;
+    justify-content: center; align-items: center;
+    width:100%; height:100%;
+    text-shadow: 2px 2px #000A;
+    box-shadow: inset -2px -4px #0006, inset 2px 2px #FFF7;
+  }
+  
+  &:hover{
+    border-color:#fffe;
+    &>p{
+      /* background-color:#6464ff73; */
+      text-shadow: 2px 2px #202013cc;
+      /* color: #ffa; */
+    }
+  }
+  &:active p{
+    box-shadow: inset -2px -4px #0004, inset 2px 2px #FFF5;
+  }
+}
+
+
+
+/* index */
+
+#index h1{
+  padding:5% 0 9pt;
+  font-size:50pt;
+  font-weight:bold;
+}
+#index nav{
+  margin:0 auto;
+  padding:0 9pt 9%;
+  gap:9pt;
+
+  &>i{
+    flex-direction:row;
+    justify-content: space-between;
+    gap:9pt;
+    & a,& button{
+      width:calc(50% - 3pt);
+    }
+  }
+}
+
+
+
+/* places */
+
+#places h1{
+  padding:0;
+}
+

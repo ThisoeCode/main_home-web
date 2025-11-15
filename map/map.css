@@ -1,0 +1,45 @@
+/* CONFIG */
+:root{
+  --thisoe:#178577;
+  --bg:#010509;
+}
+
+
+
+/* FONT */
+@font-face {
+  font-family: "FP";
+  src: url("../font/fusion-pixel-12px-monospaced-zh_hans.ttf.woff2") format("woff2");
+}
+
+
+
+/* RESET */
+html,body,
+i,a,p,button{all:unset}
+
+*{
+  margin:0;
+  font-size:12pt;line-height:1;
+  font-family:"FP" !important;
+}
+*, ::before, ::after{
+  box-sizing: border-box;  margin: 0; padding: 0;
+}
+i,nav,p{display:flex;flex-direction:column}
+
+*::selection{
+  background:#07f7;
+  /* color:#cef; */
+  /* text-shadow: 1px 1px #335; */
+}
+
+
+
+/*******/
+body{
+  background-color:var(--bg);
+  &>*{color:#fff}
+}
+
+p{font-family:"FP";}
