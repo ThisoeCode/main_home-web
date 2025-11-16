@@ -21,7 +21,7 @@ i,a,p,button{all:unset}
 *{
   margin:0;
   font-size:12pt;line-height:1;
-  font-family:"FP" !important;
+  font-family:"FP";
 }
 *, ::before, ::after{
   box-sizing: border-box;  margin: 0; padding: 0;
@@ -39,7 +39,9 @@ i,nav,p{display:flex;flex-direction:column}
 /*******/
 body{
   background-color:var(--bg);
+  width:100vw; height:100vh;
+  width:100dvw;height:100dvh;
   &>*{color:#fff}
 }
 
-p{font-family:"FP";}
+p{text-align:center;margin:39vh auto 0;font-family:"FP";font-size:18pt;}
