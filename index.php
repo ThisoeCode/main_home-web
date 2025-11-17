@@ -10,6 +10,10 @@
   <title>Main Home | Thisoe</title>
 <!-- JS -->
   <script src="./src/jquery.js"></script>
+  <script src="./src/store.js?v0<?php if($TEST)echo '=t'.time();?>"></script>
+  <script src="./db/places.js?v0<?php if($TEST)echo '=t'.time();?>"></script>
+  <script src="./db/tags.js?v0<?php if($TEST)echo '=t'.time();?>"></script>
+  <script src="./db/cmds.js?v0<?php if($TEST)echo '=t'.time();?>"></script>
   <script src="./src/index.js?v0<?php if($TEST)echo '=t'.time();?>"></script>
 <!-- CSS -->
   <link rel="stylesheet" href="./src/index.css?v0<?php if($TEST)echo '=t'.time();?>">
@@ -37,42 +41,14 @@
 
 <main id="places"><h1>地区一览</h1>
   <i class='list'>
-    <i>
-      <i class='thumb' style='background-image:url("./public/places/伊恩.png"),url("../public/places/_fallback.png")'></i>
-      <i class='meta'>
-        <i>
-          <h2>伊恩</h2>
-          <button class="copy"><p>2179 80 -171</p></button>
-        </i>
-        <i>
-          <i class='tag' style='background-color:DarkRed'>世界首都</i>
-          <i class='tag' style='background-color:SlateGray'>现代风</i>
-          <i class='tag' style='background-color:DarkGoldenRod'>架空</i>
-          <i class='tag' style='background-color:DarkGreen'>MC火柴盒</i>
-        </i>
-      </i>
-      <i class='info'><button></button></i>
-    </i>
-    <i>
-      <i class='thumb' style='background-image:url("./public/places/大蘑菇.png"),url("../public/places/_fallback.png")'></i>
-      <i class='meta'>
-        <i>
-          <h2>大蘑菇</h2>
-          <button class="copy"><p>2173 64 -21</p></button>
-        </i>
-        <i>
-          <i class='tag' style='background-color:DarkRed'>世界重生点</i>
-          <i class='tag' style='background-color:DarkMagenta'>单一建筑或结构</i>
-          <i class='tag' style='background-color:Maroon'>指令设施</i>
-        </i>
-      </i>
-      <i class='info'><button></button></i>
-    </i>
+    <!-- Dynamic -->
   </i>
   <i class='options'>
     <i>
-      <button disabled><p>复制tp指令:关</p></button>
-      <button disabled><p>添加地区</p></button>
+      <button disabled><p>单击复制：开</p></button>
+      <button disabled><p>仅复制坐标模式</p></button>
+    </i>
+    <i>
       <button class="goback"><p>返回</p></button>
     </i>
   </i>
@@ -86,7 +62,10 @@
   </i>
   <i class='options'>
     <i>
-      <button disabled><p>添加文化财</p></button>
+      <button disabled><p>单击复制：开</p></button>
+      <button disabled><p>仅复制坐标模式</p></button>
+    </i>
+    <i>
       <button class="goback"><p>返回</p></button>
     </i>
   </i>

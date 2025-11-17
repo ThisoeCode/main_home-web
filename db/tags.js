@@ -24,7 +24,7 @@ eastern:{
 },
 
 western:{
-  title:"西式", color:"MidnightBlue",
+  title:"西式", color:"#059",
 },
 
 washiki:{
@@ -36,7 +36,7 @@ modern:{
 },
 
 traditional:{
-  title:"传统风", color:"SlateGray",
+  title:"传统风", color:"#185",
 },
 
 mixed:{
@@ -50,11 +50,11 @@ fictional:{
 // 名词
 
 city:{
-  title:"城市", color:"DarkSlateGray",
+  title:"城市", color:"Navy",
 },
 
 town:{
-  title:"小镇", color:"DarkSlateGray",
+  title:"小镇", color:"Chocolate",
 },
 
 mcClassic:{
@@ -66,7 +66,7 @@ oneStruct:{
 },
 
 mcTheme:{
-  title:"MC游娱设施", color:"Violet",
+  title:"游娱功能设施", color:"Violet",
 },
 
 oriVillage:{
@@ -78,7 +78,7 @@ redstone:{
 },
 
 cmdBlock:{
-  title:'指令设施', color:'Maroon',
+  title:'指令设施', color:'#953',
 },
 
 }
