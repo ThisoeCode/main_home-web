@@ -45,8 +45,8 @@
   </i>
   <i class='options'>
     <i>
-      <button disabled><p>单击复制：开</p></button>
-      <button disabled><p>仅复制坐标模式</p></button>
+      <button id='isPlacesCopy'><p></p></button>
+      <button id='placesCopyMode' disabled><p>仅复制坐标模式</p></button>
     </i>
     <i>
       <button class="goback"><p>返回</p></button>

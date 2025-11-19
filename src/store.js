@@ -1,30 +1,30 @@
 const
 
-// CONFIG
-storeLib = {
-  isPlacesCopy:['pc','1'],
-  /** ``, `tp `, `/tp ` */
-  placesCopyMode:['pm','none'],
+/** ### Store Lib
+ * - The init val & a copy of `localStorage`
+ */
+SL = {
+  // cookieAgreement:['0','Nessesary Only'],
+  isPlacesCopy:['1','1'],
+  placesCopyMode:['2',' '],
 
 },
 
 // EXPORT
 Store = {
-  set:(k,v)=>localStorage.setItem(storeLib[k][0],v),
-  get:k=>localStorage.getItem(storeLib[k][0]),
-  init:(_=>{
-    const r={isLocalStorageAvailable:(_=>{
-      try{
-        localStorage.getItem('ls')
-        return '1'
-      }catch(e){
-        return '0'
-      }
-    })()}
-    Object.keys(storeLib).forEach(k=>{
-      const q=Store.get(k)
-      r[k] = q===null?storeLib[k][1]:q
-    })
-    return r
-  })(),
+  set:(i,v)=>{
+    localStorage.setItem(i,v)
+    return v
+  },
+  get:k=>localStorage.getItem(SL[k][0]),
+}
+Store.toggle=(k,opts)=>{
+  if(!Array.isArray(opts)) throw new Error('[Thisoe] ERROR \n`Store.toggle`: Unexpected 2nd param `opts`. Please pass in an array.')
+  const current = SL[k][1], i=opts.indexOf(current)
+  if(i===-1) throw new Error('[Thisoe] ERROR \n`Store.toggle`: The item `'+i+'` was not found in given options. Key id: '+current)
+  /** result */
+  const r = opts[(i + 1) % opts.length]
+  Store.set(SL[k][0],r)
+  SL[k][1]=r
+  return r
 }

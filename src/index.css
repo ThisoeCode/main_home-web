@@ -182,7 +182,7 @@ button:disabled{
 
     &>.thumb{
       width:var(--ih); height:var(--ih);
-      background:#999 url('../public/places/_fallback.png') center / cover no-repeat; /* default thumbnail img */
+      background:#999 url('../public/places/v0/thumb/_fallback.png') center / cover no-repeat; /* default thumbnail img */
     }
 
     &>.meta{

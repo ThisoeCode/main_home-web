@@ -8,7 +8,7 @@ TEST=true,
 
 
 // LIB
-bgColor='background-color',
+bg='background-color',
 
 goto=_=>{
   $('main').hide()
@@ -26,7 +26,7 @@ li=(title,coords,tags)=>{
   })
   return`
 <i>
-  <i class='thumb' style='background-image:url("./public/places/${title}.png"),url("../public/places/_fallback.png")'></i>
+  <i class='thumb' style='background-image:url("./public/places/v0/thumb/${title}.png"),url("../public/places/v0/thumb/_fallback.png")'></i>
   <i class='meta'>
     <i>
       <h2>${title}</h2>
@@ -35,9 +35,46 @@ li=(title,coords,tags)=>{
     <i>${tag}</i>
   </i>
   <i class='info'><button></button></i>
-</i>
-  `
-}
+</i>`
+},
+
+render={
+  places:{
+    isCopyBtn:_=>{
+      $('#isPlacesCopy>p').text(`单击复制：${_?'开':'关'}`)
+      $('#placesCopyMode').prop('disabled',!_)
+    },
+    copyMode:_=>{
+      $('#placesCopyMode>p').text(`${
+        _===' '
+          ? '仅复制坐标'
+          : _==='tp '
+            ? '复制tp指令'
+            : '复制/tp指令'
+      }模式`)
+    },
+  },
+},
+
+set={
+  places:{
+    toggleCopy:(setto=null)=>{
+      const is = setto===null
+        ? Store.toggle('isPlacesCopy',['','1'])
+        : Store.set(SL.isPlacesCopy[0],setto)
+      render.places.isCopyBtn(is)
+    },
+    copyMode:(setto=null)=>{
+      const is = setto===null
+        ? Store.toggle('placesCopyMode',[' ','tp ','/tp '])
+        : Store.set(SL.placesCopyMode[0],setto)
+      render.places.copyMode(is)
+    }
+  },
+},
+
+__=undefined
+
 
 
 // FLAGS
@@ -50,9 +87,22 @@ page=window.location.pathname.slice(1)
 // INIT
 
 TEST&&console.log('[Thisoe] TEST MODE')
+
 $('main').css('display','flex').hide()
 
-// places render
+// init store lib
+Object.keys(SL).forEach(k=>{
+  const
+    cache=Store.get(k),
+    iniVal=SL[k][1]
+  cache===null && Store.set(SL[k][0],iniVal)
+  if(cache!==iniVal) SL[k][1]=cache
+})
+// render stored
+render.places.isCopyBtn(SL.isPlacesCopy[1])
+render.places.copyMode(SL.placesCopyMode[1])
+
+// list places
 PLACES.forEach(_=>{
   $('#places .list').append(
     li(_.id,`${_.x} ${_.y} ${_.z}`,_.tags)
@@ -71,7 +121,6 @@ $(window).on('popstate',_=>{
 })
 
 $('.goback').click(_=>{
-    console.log('oh')
     if(window.history.length > 1) history.back()
     else goto()
   })
@@ -83,18 +132,25 @@ $('#index')
 
 $('#places,#heritages')
   .on('click','.list>i',function(){
-    // TODO: Toggle copy or not & add '/tp' or not
-    if(!$(this).hasClass('active')){
+    // if(!$(this).hasClass('active')){
       $('.list>i').removeClass('active')
-      $('.list>i p').css(bgColor,'#3339')
-      navigator.clipboard.writeText(
-        $(this).find('p').text()
-      )
-      $(this)
-        .addClass('active')
-      $(this).find('p')
-        .css(bgColor,'green')
+      $(this).addClass('active')
+      if(SL.isPlacesCopy[1]){
+        $('.list>i p').css(bg,'#3339')
+        navigator.clipboard.writeText(
+          SL.placesCopyMode[1] + $(this).find('p').text() + ' '
+        )
+        $(this).find('p').css(bg,'green')
+      }
     }
+  // }
+  )
+  .on('click','#isPlacesCopy',_=>{
+    $('.list>i p').css(bg,'#3339')
+    set.places.toggleCopy()
+  })
+  .on('click','#placesCopyMode',_=>{
+    set.places.copyMode()
   })
 
 
