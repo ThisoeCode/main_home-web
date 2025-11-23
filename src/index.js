@@ -50,7 +50,9 @@ render={
           ? '仅复制坐标'
           : _==='tp '
             ? '复制tp指令'
-            : '复制/tp指令'
+            : _==='/tp @p '
+              ? '指令方块'
+              : '复制/tp指令'
       }模式`)
     },
   },
@@ -66,7 +68,7 @@ set={
     },
     copyMode:(setto=null)=>{
       const is = setto===null
-        ? Store.toggle('placesCopyMode',[' ','tp ','/tp '])
+        ? Store.toggle('placesCopyMode',[' ','tp ','/tp ','/tp @p '])
         : Store.set(SL.placesCopyMode[0],setto)
       render.places.copyMode(is)
     }
@@ -121,9 +123,10 @@ $(window).on('popstate',_=>{
 })
 
 $('.goback').click(_=>{
-    if(window.history.length > 1) history.back()
-    else goto()
-  })
+  window.history.length > 1
+    ? history.back()
+    : goto()
+})
 
 $('#index')
   .on('click','nav button',function(){

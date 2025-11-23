@@ -74,14 +74,32 @@
 
 
 <main id="clipboard"><h1>指令剪切板</h1>
-  <div class='cmd-wrap'>
-    <i id='shared'></i>
-    <!-- Dynamic -->
-  </div>
+  <i class='cmd-wrap'>
+    <i class="anchors">
+      <h2>指令官方说明书</h2>
+      <i>
+        <a href="https://zh.minecraft.wiki/w/%E5%91%BD%E4%BB%A4#Java%E7%89%88"target="_blank"><p>MC指令<img class="ico"alt="outer link"src="/public/outer.png"></p></a>
+        <a href="https://minecraft-worldedit.fandom.com/wiki/Worldedit_Commands#/commands"target="_blank"><p>小木斧指令(英文)<img class="ico"alt="outer link"src="/public/outer.png"></p></a>
+      </i>
+    </i>
+    <i class='local cmd'>
+      <h2>本地剪切板</h2>
+      <!-- Dynamic -->
+      <label for="cmd1">修改木牌字体样式</label>
+      <i>
+        <textarea id="cmd1">/data merge block ~ ~ ~ {front_text:{messages:['{"text":"[岳茸关]","color":"white"}','{"text":"沙地东路","bold":true}','{"text":""}','{"text":""}']}} </textarea>
+        <button class="copy"disabled><p>复制</p></button>
+      </i>
+    </i>
+    <i class='share cmd'>
+      <h2>云剪切板</h2>
+      <!-- Dynamic -->
+    </i>
+  </i>
   <i class='options'>
     <i>
-      <button id='cloud-cmd'disabled><p>上传新指令</p></button>
-      <button id='local-cmd'disabled><p>添加私人指令</p></button>
+      <button id='cloud-cmd'disabled><p>上传共享指令</p></button>
+      <button id='local-cmd'disabled><p>添加本地指令</p></button>
     </i>
     <i>
       <button id="toggle-slash"disabled><p>复制斜杠：关</p></button>
